@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pymongo
+python-dotenv
+openai
+PyJWT
+pwdlib[argon2]

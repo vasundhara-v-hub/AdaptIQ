@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AdaptIQ - Personalized Learning Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            A
+        </span>
+
+        <span>
+            Adapt<span>IQ</span>
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#dashboard">
+            Dashboard
+        </a>
+
+        <a href="#learning">
+            Learning
+        </a>
+
+        <a href="#progress">
+            Progress
+        </a>
+
+        <a href="#quiz">
+            Diagnostic Test
+        </a>
+
+        <a href="#study-plan-section">
+            Learning Path
+        </a>
+
+    </nav>
+
+
+    <div class="nav-right">
+
+        <button
+            class="theme-btn"
+            onclick="toggleTheme()"
+            aria-label="Toggle theme"
+        >
+            ☀
+        </button>
+
+
+        <div class="profile-name">
+    <span id="student-name">Student</span>
+</div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+
+<!-- =====================================================
+     HERO / DASHBOARD
+===================================================== -->
+
+<section
+    class="hero"
+    id="dashboard"
+>
+
+    <div class="hero-content">
+
+
+        <div class="badge">
+            AI-POWERED PERSONALIZED LEARNING
+        </div>
+
+
+        <h1>
+
+            Learn Smarter.<br>
+
+            <span>
+                Study What Matters Next.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            AdaptIQ analyzes your syllabus and current knowledge,
+            identifies your learning level, and creates a
+            personalized learning path for you.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="startLearning()"
+            >
+                Start Learning →
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="scrollToSection('study-plan-section')"
+            >
+                View Learning Path
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TODAY'S FOCUS -->
+
+    <div class="hero-card">
+
+        <div class="ai-circle">
+            AI
+        </div>
+
+
+        <h3>
+            Today's Learning Focus
+        </h3>
+
+
+        <div class="focus-topic">
+
+            <div>
+
+                <small>
+                    Recommended Next
+                </small>
+
+                <strong id="focus-topic">
+                    Start by entering your syllabus
+                </strong>
+
+            </div>
+
+
+            <span
+                class="score"
+                id="focus-score"
+            >
+                —
+            </span>
+
+        </div>
+
+
+        <p id="focus-description">
+
+            Complete your diagnostic test to let AdaptIQ
+            determine what you should study next.
+
+        </p>
+
+
+        <button
+            onclick="startLearning()"
+            class="small-btn"
+        >
+            Start Diagnostic Test
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DASHBOARD STATS
+===================================================== -->
+
+<section class="stats-section">
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            📚
+        </div>
+
+        <div>
+
+            <span>
+                Topics Completed
+            </span>
+
+            <strong id="topics-completed">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🎯
+        </div>
+
+        <div>
+
+            <span>
+                Diagnostic Score
+            </span>
+
+            <strong id="average-score">
+                0%
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🔥
+        </div>
+
+        <div>
+
+            <span>
+                Learning Streak
+            </span>
+
+            <strong id="learning-streak">
+                0 Days
+            </strong>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🧠
+        </div>
+
+        <div>
+
+            <span>
+                Current Level
+            </span>
+
+            <strong id="current-level">
+                Not assessed
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LEARNING ENGINE
+===================================================== -->
+
+<section
+    class="section"
+    id="learning"
+>
+
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="section-label">
+                ADAPTIQ ENGINE
+            </span>
+
+
+            <h2>
+                Create Your Learning Path
+            </h2>
+
+
+            <p>
+
+                Enter your subject and syllabus.
+                AdaptIQ will analyze your content and
+                generate a personalized diagnostic test.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="syllabus-card">
+
+
+        <!-- SUBJECT -->
+
+        <div class="input-group">
+
+            <label for="subject-input">
+                Subject
+            </label>
+
+
+            <input
+                type="text"
+                id="subject-input"
+                placeholder="Example: Python"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+
+        <!-- SYLLABUS -->
+
+        <div class="input-group">
+
+            <label for="syllabus-input">
+                Syllabus
+            </label>
+
+
+            <textarea
+                id="syllabus-input"
+                rows="8"
+                placeholder="Paste your syllabus here...
+
+Example:
+
+Variables
+Data Types
+Operators
+Conditional Statements
+Loops
+Functions
+Lists
+Tuples
+Dictionaries"
+            ></textarea>
+
+        </div>
+
+
+
+        <!-- GENERATE QUIZ -->
+
+        <button
+            class="primary-btn"
+            onclick="generateDiagnosticQuiz()"
+        >
+            Analyze Syllabus & Generate Quiz →
+        </button>
+
+
+        <p
+            id="generation-status"
+            class="generation-status"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DIAGNOSTIC QUIZ
+===================================================== -->
+
+<section
+    class="quiz-section"
+    id="quiz"
+>
+
+
+    <div class="quiz-container">
+
+
+        <div class="quiz-header">
+
+
+            <div>
+
+                <span class="section-label">
+                    DIAGNOSTIC TEST
+                </span>
+
+
+                <h2>
+                    Test Your Knowledge
+                </h2>
+
+
+                <p>
+
+                    AdaptIQ uses your answers to understand
+                    your current learning level.
+
+                </p>
+
+            </div>
+
+
+            <span id="question-number">
+                Question 1 / 5
+            </span>
+
+        </div>
+
+
+
+        <!-- QUESTION CARD -->
+
+        <div class="question-card">
+
+
+            <h3 id="question">
+
+                Generate a diagnostic quiz from
+                your syllabus first.
+
+            </h3>
+
+
+
+            <div class="options">
+
+
+                <button type="button">
+                    Option A
+                </button>
+
+
+                <button type="button">
+                    Option B
+                </button>
+
+
+                <button type="button">
+                    Option C
+                </button>
+
+
+                <button type="button">
+                    Option D
+                </button>
+
+
+            </div>
+
+
+
+            <button
+                class="primary-btn next-btn"
+                onclick="nextQuestion()"
+            >
+                Next Question →
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUIZ RESULT
+===================================================== -->
+
+<section
+    class="section"
+    id="quiz-result-section"
+>
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                PERFORMANCE
+            </span>
+
+
+            <h2>
+                Your Diagnostic Result
+            </h2>
+
+
+            <p>
+                Your result determines the learning level
+                used to create your personalized plan.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        id="quiz-result-container"
+        class="quiz-result-container"
+    >
+
+        <div class="empty-plan">
+
+            Complete the diagnostic test to see
+            your performance.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PERSONALIZED RECOMMENDATION
+===================================================== -->
+
+<section
+    class="section"
+    id="recommendations"
+>
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-label">
+                AI INSIGHTS
+            </span>
+
+
+            <h2>
+                What Should You Study Next?
+            </h2>
+
+
+            <p>
+                AdaptIQ recommends your next learning topics
+                based on your diagnostic performance.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        id="recommendation-container"
+        class="recommendation-grid"
+    >
+
+
+        <div class="empty-plan">
+
+            Complete your diagnostic test to receive
+            personalized recommendations.
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY RECOMMENDED
+===================================================== -->
+
+<section
+    class="explanation-section"
+>
+
+
+    <div class="explanation-card">
+
+
+        <div class="ai-icon">
+            ✦
+        </div>
+
+
+        <div>
+
+
+            <span class="section-label">
+                EXPLAINABLE AI
+            </span>
+
+
+            <h2 id="recommendation-title">
+
+                Your Personalized Learning Recommendation
+
+            </h2>
+
+
+            <p id="recommendation-description">
+
+                After completing your diagnostic test,
+                AdaptIQ will explain your recommended
+                learning level and next steps.
+
+            </p>
+
+
+            <div
+                class="reason-box"
+                id="recommendation-reasons"
+            >
+
+
+                <div>
+
+                    <span>
+                        Diagnostic Score
+                    </span>
+
+                    <strong id="reason-score">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Recommended Level
+                    </span>
+
+                    <strong id="reason-level">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Learning Plan
+                    </span>
+
+                    <strong id="reason-days">
+                        7 Days
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section
+    class="section"
+    id="progress"
+>
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-label">
+                PERFORMANCE ANALYSIS
+            </span>
+
+
+            <h2>
+                Your Learning Progress
+            </h2>
+
+
+            <p>
+                Track your progress through your personalized
+                7-day learning path.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="progress-dashboard">
+
+
+        <!-- OVERALL PROGRESS -->
+
+        <div class="progress-main">
+
+
+            <h3>
+                Overall Learning Progress
+            </h3>
+
+
+            <div class="big-progress">
+
+
+                <div class="circle-progress">
+
+
+                    <div>
+
+                        <strong id="overall-progress">
+                            0%
+                        </strong>
+
+                        <span>
+                            Overall
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TOPIC / PLAN PROGRESS -->
+
+        <div class="topic-progress">
+
+
+            <h3>
+                Learning Path Progress
+            </h3>
+
+
+            <div class="topic">
+
+
+                <div class="topic-header">
+
+                    <span>
+                        Completed Days
+                    </span>
+
+                    <strong id="completed-days">
+                        0 / 7
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        id="overall-progress-bar"
+                        style="width: 0%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="topic">
+
+
+                <div class="topic-header">
+
+                    <span>
+                        Diagnostic Performance
+                    </span>
+
+                    <strong id="progress-score">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        id="diagnostic-progress-bar"
+                        style="width: 0%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="topic">
+
+
+                <div class="topic-header">
+
+                    <span>
+                        Current Level
+                    </span>
+
+                    <strong id="progress-level">
+                        Not assessed
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     7-DAY STUDY PLAN
+===================================================== -->
+
+<section
+    class="section"
+    id="study-plan-section"
+>
+
+
+    <div class="section-heading">
+
+
+        <div>
+
+            <span class="section-label">
+                AI PERSONALIZED PLAN
+            </span>
+
+
+            <h2>
+                Your 7-Day Learning Path
+            </h2>
+
+
+            <p>
+
+                Your personalized study plan is generated
+                using your syllabus and diagnostic performance.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div
+        id="study-plan-container"
+        class="study-plan-container"
+    >
+
+
+        <div class="empty-plan">
+
+            Complete the diagnostic test to generate
+            your personalized 7-day learning path.
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-logo">
+
+        Adapt<span>IQ</span>
+
+    </div>
+
+
+    <p>
+
+        AI-Powered Personalized Learning Assistant
+
+    </p>
+
+
+    <p class="copyright">
+
+        © 2026 AdaptIQ Team
+
+    </p>
+
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
